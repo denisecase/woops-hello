@@ -1,0 +1,77 @@
+/*
+ * This file builds our collaborative Java application.
+ * For more details take a look at the 'Building Java & JVM projects' chapter in the Gradle
+ * User Manual available at https://docs.gradle.org/7.0/userguide/building_java_projects.html
+ */
+
+plugins {
+    // Apply the application plugin to build & run a CLI application with .\gradlew run
+    id 'application'
+    // Apply the java plugin to build a fat jar (everything needed) with .\gradlew build
+    id 'java'
+    // Apply the idea plugin to create files needed for IntelliJ with .\gradlew idea
+    // https://docs.gradle.org/current/userguide/idea_plugin.html
+    id 'idea'
+    // Apply the eclipse plugin to create .classpath .\gradlew idea with .\gradlew eclipseClasspath 
+    // https://docs.gradle.org/current/userguide/eclipse_plugin.html
+    id 'eclipse'
+}
+
+group = 'woops.hello'
+version = ''
+
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(15)
+    }
+}
+jar {
+    manifest {
+        attributes "Main-Class": "woops.hello.Greeter"
+    }
+}
+sourceSets {
+  main {
+    java {
+      include 'woops/hello/**'
+    }
+  }
+}
+
+clean {
+ delete "bin/"
+}
+
+repositories {
+    // Use Maven Central for resolving dependencies.
+    mavenCentral()
+}
+
+dependencies {
+    // This dependency is used by the application.
+    implementation 'com.google.guava:guava:30.0-jre'
+    // Dependency on local jar files in libs directory
+    implementation fileTree('libs'){include '*.jar'}
+}
+
+application {
+    // Define the main class for the application.
+    mainClass = 'woops.hello.Greeter'
+    mainModule = 'woops.hello' // name defined in module-info.java
+}
+
+idea {
+  project {
+    //if you want to set specific jdk and language level
+    jdkName = '15'
+    languageLevel = '15'
+
+    //you can configure the VCS used by the project
+    vcs = 'Git'
+
+    //you can add project-level libraries
+    // projectLibraries << new ProjectLibrary(name: "my-library", classes: [new File("path/to/library")])
+  }
+}
+

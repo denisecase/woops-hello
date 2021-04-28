@@ -1,0 +1,7 @@
+{
+  "java.project.sourcePaths": [
+    "src/main/java/woops/hello",
+    "libs/*"
+  ],
+  "java.configuration.updateBuildConfiguration": "automatic"
+}
