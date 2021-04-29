@@ -1,6 +1,6 @@
 # woops-hello
 
-> Combine our code to welcome new Java coders.
+> A simple collaboration app to illustrate how easy it is to use and share code with Java.
 
 ## Get started
 
