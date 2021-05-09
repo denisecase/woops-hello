@@ -21,3 +21,7 @@ The project comes with its own Gradle "wrapper".
 ## Participating Greeters
 
 - [woops-hello-denisecase](https://github.com/denisecase/woops-hello-denisecase)
+
+## Resources
+
+- [Java 11 Cheatsheet](https://introcs.cs.princeton.edu/java/11cheatsheet/)
